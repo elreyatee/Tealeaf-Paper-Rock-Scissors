@@ -3,10 +3,8 @@
 # Paper - Rock - Scissors Game
 
 # Possible choices for player to choose from
-CHOICES = ['p', 'r', 's'] 
 
-# Map possible choices into words
-INWORDS = {CHOICES[0] => 'Paper', CHOICES[1] => 'Rock', CHOICES[2] => 'Scissors'}
+CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
 def verify_choice(choice)
 
@@ -19,7 +17,7 @@ end
 
 def cmptrs_move
   # Randomly generate 
-  CHOICES[rand(0..2)]
+  CHOICES.keys[rand(0..2)]
 end
 
 def plyrs_move
@@ -39,7 +37,7 @@ end
 
 def compare_moves(plyr, cmptr)
 
-  puts "You picked #{INWORDS[plyr]} and computer picked #{INWORDS[cmptr]}"
+  puts "You picked #{CHOICES[plyr]} and computer picked #{CHOICES[cmptr]}"
 
   winner =  
     case 
