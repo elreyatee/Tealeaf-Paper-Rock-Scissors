@@ -4,30 +4,28 @@
 
 # Possible choices for player to choose from
 
+require 'pry'
+
 CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
-def verify_choice(choice)
+def valid_choice?(choice)
 
-  if CHOICES.include?(choice)
-    true # valid
-  else
-    false # invalid 
-  end
+  CHOICES.include?(choice) ? true : false 
 end
 
-def cmptrs_move
+def computers_move
   # Randomly generate 
-  CHOICES.keys[rand(0..2)]
+  CHOICES.keys.sample
 end
 
-def plyrs_move
+def players_move
 
   loop do
     puts "Choose one: (P/R/S)"
     
     choice = gets.chomp.downcase #string
 
-    if verify_choice(choice) == true
+    if valid_choice?(choice)  
       return choice # breaks out of method
     else
       puts "Invalid selection, please try again!"
@@ -35,23 +33,23 @@ def plyrs_move
   end
 end
 
-def compare_moves(plyr, cmptr)
-
-  puts "You picked #{CHOICES[plyr]} and computer picked #{CHOICES[cmptr]}"
+def compare_moves(player, computer)
+  
+  puts "You picked #{CHOICES[player]} and computer picked #{CHOICES[computer]}"
 
   winner =  
     case 
-    when plyr == 'p' && cmptr == 'r'
+    when player == 'p' && computer == 'r'
       "You won! Paper beats rock!"
-    when plyr == 'p' && cmptr == 's'
+    when player == 'p' && computer == 's'
       "You lose! Scissors cuts paper!"
-    when plyr == 'r' && cmptr == 's'
+    when player == 'r' && computer == 's'
       "You won! Rock crushes scissors!"
-    when plyr == 'r' && cmptr == 'p'
+    when player == 'r' && computer == 'p'
       "You lose! Paper covers rock!"
-    when plyr == 's' && cmptr == 'p'
+    when player == 's' && computer == 'p'
       "You won! Scissors cuts paper!"
-    when plyr == 's' && cmptr == 'r'
+    when player == 's' && computer == 'r'
       "You lose! Rock crushes scissors!"
     else
       "There's a tie!"
@@ -63,7 +61,7 @@ def play_game
   loop do
     puts "Play Paper Rock Scissors!"
 
-    puts result = compare_moves(plyrs_move, cmptrs_move) 
+    puts result = compare_moves(players_move, computers_move) 
 
     puts "Would you like to play again? (Y/N)"
     play_again = gets.chomp.downcase
