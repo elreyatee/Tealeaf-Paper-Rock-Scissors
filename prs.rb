@@ -9,7 +9,6 @@ require 'pry'
 CHOICES = {'p' => 'Paper', 'r' => 'Rock', 's' => 'Scissors'}
 
 def valid_choice?(choice)
-
   CHOICES.include?(choice) ? true : false 
 end
 
@@ -19,7 +18,6 @@ def computers_move
 end
 
 def players_move
-
   loop do
     puts "Choose one: (P/R/S)"
     
@@ -34,7 +32,6 @@ def players_move
 end
 
 def compare_moves(player, computer)
-  
   puts "You picked #{CHOICES[player]} and computer picked #{CHOICES[computer]}"
 
   winner =  
@@ -57,7 +54,6 @@ def compare_moves(player, computer)
 end
 
 def play_game
-
   loop do
     puts "Play Paper Rock Scissors!"
 
